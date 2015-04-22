@@ -14,13 +14,11 @@
 	<body>
 		<div id="map"></div>
 		<script src="data/exp_majorairports.js"></script>
-		<script src="data/exp_majorairports.js"></script>
-		<script src="data/exp_majorairports.js"></script>
-		<script src="data/exp_majorairports.js"></script>
+		<script src="data/exp_ne10mairports.js"></script>
 		<script>
 		var map = L.map('map', {
 			zoomControl:true, maxZoom:19
-		}).fitBounds([[-237.079569299,-293.508533824],[248.640994504,450.586727924]]);
+		}).fitBounds([[-115.164602847,-183.993911926],[139.629845241,188.053718949]]);
 		var hash = new L.Hash(map);
 		var additional_attrib = 'created w. <a href="https://github.com/geolicious/qgis2leaf" target ="_blank">qgis2leaf</a> by <a href="http://www.geolicious.de" target ="_blank">Geolicious</a> & contributors<br>';
 		var feature_group = new L.featureGroup([]);
@@ -30,132 +28,26 @@
 		});	
 		basemap_0.addTo(map);	
 		var layerOrder=new Array();
-		function pop_majorairports(feature, layer) {					
-			var popupContent = feature.properties.html_exp;
+		function pop_ne10mairports(feature, layer) {					
+			var popupContent = '<table><tr><th scope="row">scalerank</th><td>' + Autolinker.link(String(feature.properties['scalerank'])) + '</td></tr><tr><th scope="row">featurecla</th><td>' + Autolinker.link(String(feature.properties['featurecla'])) + '</td></tr><tr><th scope="row">type</th><td>' + Autolinker.link(String(feature.properties['type'])) + '</td></tr><tr><th scope="row">name</th><td>' + Autolinker.link(String(feature.properties['name'])) + '</td></tr><tr><th scope="row">abbrev</th><td>' + Autolinker.link(String(feature.properties['abbrev'])) + '</td></tr><tr><th scope="row">location</th><td>' + Autolinker.link(String(feature.properties['location'])) + '</td></tr><tr><th scope="row">gps_code</th><td>' + Autolinker.link(String(feature.properties['gps_code'])) + '</td></tr><tr><th scope="row">iata_code</th><td>' + Autolinker.link(String(feature.properties['iata_code'])) + '</td></tr><tr><th scope="row">wikipedia</th><td>' + Autolinker.link(String(feature.properties['wikipedia'])) + '</td></tr><tr><th scope="row">natlscale</th><td>' + Autolinker.link(String(feature.properties['natlscale'])) + '</td></tr><tr><th scope="row">type_code</th><td>' + Autolinker.link(String(feature.properties['type_code'])) + '</td></tr></table>';
 			layer.bindPopup(popupContent);
 		}
 
-		function doStylemajorairports(feature) {
-			switch (feature.properties.type_code) {
-				case 1:
-					return {
-						radius: '4.0',
-						fillColor: '#ffffcc',
-						color: '#000000',
-						weight: 1,
-						fillOpacity: '1.0',
-					};
-					break;
-				case 2:
-					return {
-						radius: '4.0',
-						fillColor: '#81ceb9',
-						color: '#000000',
-						weight: 1,
-						fillOpacity: '1.0',
-					};
-					break;
-				case 3:
-					return {
-						radius: '4.0',
-						fillColor: '#3391bc',
-						color: '#000000',
-						weight: 1,
-						fillOpacity: '1.0',
-					};
-					break;
-				default:
-					return {
-						radius: '4.0',
-						fillColor: '#3391bc',
-						color: '#000000',
-						weight: 1,
-						fillOpacity: '1.0',
-					};
-					break;
-			}
-		}
-		var exp_majorairportsJSON = new L.geoJson(exp_majorairports,{
-			onEachFeature: pop_majorairports,
+		var exp_ne10mairportsJSON = new L.geoJson(exp_ne10mairports,{
+			onEachFeature: pop_ne10mairports,
 			pointToLayer: function (feature, latlng) {  
-				return L.circleMarker(latlng, doStylemajorairports(feature))
-			}
-		});
-		//add comment sign to hide this layer on the map in the initial view.
-		feature_group.addLayer(exp_majorairportsJSON);
-		function pop_majorairports(feature, layer) {					
-			var popupContent = feature.properties.html_exp;
-			layer.bindPopup(popupContent);
-		}
-
-		function doStylemajorairports(feature) {
-			switch (feature.properties.type_code) {
-				case 1:
-					return {
-						radius: '4.0',
-						fillColor: '#ffffcc',
-						color: '#000000',
-						weight: 1,
-						fillOpacity: '1.0',
-					};
-					break;
-				case 2:
-					return {
-						radius: '4.0',
-						fillColor: '#81ceb9',
-						color: '#000000',
-						weight: 1,
-						fillOpacity: '1.0',
-					};
-					break;
-				case 3:
-					return {
-						radius: '4.0',
-						fillColor: '#3391bc',
-						color: '#000000',
-						weight: 1,
-						fillOpacity: '1.0',
-					};
-					break;
-				default:
-					return {
-						radius: '4.0',
-						fillColor: '#3391bc',
-						color: '#000000',
-						weight: 1,
-						fillOpacity: '1.0',
-					};
-					break;
-			}
-		}
-		var exp_majorairportsJSON = new L.geoJson(exp_majorairports,{
-			onEachFeature: pop_majorairports,
-			pointToLayer: function (feature, latlng) {  
-				return L.circleMarker(latlng, doStylemajorairports(feature))
-			}
-		});
-		//add comment sign to hide this layer on the map in the initial view.
-		feature_group.addLayer(exp_majorairportsJSON);
-		function pop_majorairports(feature, layer) {					
-			var popupContent = feature.properties.html_exp;
-			layer.bindPopup(popupContent);
-		}
-
-		var exp_majorairportsJSON = new L.geoJson(exp_majorairports,{
-			onEachFeature: pop_majorairports,
-			pointToLayer: function (feature, latlng) {
-				return L.marker(latlng, {
-					icon: L.icon({
-						iconUrl: feature.properties.icon_exp,
-						iconSize:     [24, 24], // size of the icon change this to scale your icon (first coordinate is x, second y from the upper left corner of the icon)
-						iconAnchor:   [12, 12], // point of the icon which will correspond to marker's location (first coordinate is x, second y from the upper left corner of the icon)
-						popupAnchor:  [0, -14] // point from which the popup should open relative to the iconAnchor (first coordinate is x, second y from the upper left corner of the icon)
-					})
+				return L.circleMarker(latlng, {
+					radius: 4.0,
+					fillColor: '#b66dc2',
+					color: '#000000',
+					weight: 1,
+					opacity: 1.0,
+					fillOpacity: 1.0
 				})
-			}}
-		);
+			}
+		});
 		//add comment sign to hide this layer on the map in the initial view.
-		feature_group.addLayer(exp_majorairportsJSON);
+		feature_group.addLayer(exp_ne10mairportsJSON);
 		function pop_majorairports(feature, layer) {					
 			var popupContent = feature.properties.html_exp;
 			layer.bindPopup(popupContent);
@@ -185,13 +77,13 @@
 			return this._div;
 		};
 		title.update = function () {
-			this._div.innerHTML = '<h2>Major Airports</h2>Airports Around the World'
+			this._div.innerHTML = '<h2>This is the title</h2>This is the subtitle'
 		};
 		title.addTo(map);
 	var baseMaps = {
 		'Stamen Watercolor': basemap_0
 	};
-		L.control.layers(baseMaps,{"majorairports": exp_majorairportsJSON,"majorairports": exp_majorairportsJSON,"majorairports": exp_majorairportsJSON,"majorairports": exp_majorairportsJSON},{collapsed:false}).addTo(map);
+		L.control.layers(baseMaps,{"majorairports": exp_majorairportsJSON,"ne10mairports": exp_ne10mairportsJSON},{collapsed:false}).addTo(map);
 		L.control.scale({options: {position: 'bottomleft',maxWidth: 100,metric: true,imperial: false,updateWhenIdle: false}}).addTo(map);
 	</script>
 </body>
