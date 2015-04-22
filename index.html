@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>QGIS2leaf webmap</title>
+		<title>Global Airports</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
 		<link rel="stylesheet" type="text/css" href="css/own_style.css">
@@ -18,15 +18,84 @@
 		<script>
 		var map = L.map('map', {
 			zoomControl:true, maxZoom:19
-		}).fitBounds([[-115.164602847,-183.993911926],[139.629845241,188.053718949]]);
+		}).fitBounds([[-109.197519754,-183.993911926],[133.662762148,188.053718949]]);
 		var hash = new L.Hash(map);
 		var additional_attrib = 'created w. <a href="https://github.com/geolicious/qgis2leaf" target ="_blank">qgis2leaf</a> by <a href="http://www.geolicious.de" target ="_blank">Geolicious</a> & contributors<br>';
 		var feature_group = new L.featureGroup([]);
 		var raster_group = new L.LayerGroup([]);
-		var basemap_0 = L.tileLayer('http://a.tile.stamen.com/watercolor/{z}/{x}/{y}.png', { 
-			attribution: additional_attrib + 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data: &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		var basemap_0 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
 		});	
-		basemap_0.addTo(map);	
+		basemap_0.addTo(map);
+		var basemap_1 = L.tileLayer('http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});
+		var basemap_2 = L.tileLayer('http://a.tile.stamen.com/toner/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data: &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});
+		var basemap_3 = L.tileLayer('http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});
+		var basemap_4 = L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
+		});
+		var basemap_5 = L.tileLayer('http://tiles.openseamap.org/seamark/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + 'Map data: &copy; <a href="http://www.openseamap.org">OpenSeaMap</a> contributors'
+		});
+		var basemap_6 = L.tileLayer('http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});
+		var basemap_7 = L.tileLayer('http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});
+		var basemap_8 = L.tileLayer('http://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});
+		var basemap_9 = L.tileLayer('http://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});
+		var basemap_10 = L.tileLayer('http://openmapsurfer.uni-hd.de/tiles/roads/x={x}&y={y}&z={z}', { 
+			attribution: additional_attrib + 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data: &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});
+		var basemap_11 = L.tileLayer('http://openmapsurfer.uni-hd.de/tiles/adminb/x={x}&y={y}&z={z}', { 
+			attribution: additional_attrib + 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data: &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});
+		var basemap_12 = L.tileLayer('http://openmapsurfer.uni-hd.de/tiles/roadsg/x={x}&y={y}&z={z}', { 
+			attribution: additional_attrib + 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data: &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});
+		var basemap_13 = L.tileLayer('http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', { 
+			attribution: additional_attrib + 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data: &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});
+		var basemap_14 = L.tileLayer('http://otile1.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg', { 
+			attribution: additional_attrib + 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
+		});
+		var basemap_15 = L.tileLayer('http://a.tile.stamen.com/terrain/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data: &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});
+		var basemap_16 = L.tileLayer('http://a.tile.stamen.com/watercolor/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data: &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});
+		var basemap_17 = L.tileLayer('http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>'
+		});
+		var basemap_18 = L.tileLayer('http://{s}.tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>'
+		});
+		var basemap_19 = L.tileLayer('http://{s}.tile.openweathermap.org/map/rain/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>'
+		});
+		var basemap_20 = L.tileLayer('http://{s}.tile.openweathermap.org/map/pressure/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>'
+		});
+		var basemap_21 = L.tileLayer('http://{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>'
+		});
+		var basemap_22 = L.tileLayer('http://{s}.tile.openweathermap.org/map/temp/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>'
+		});
+		var basemap_23 = L.tileLayer('http://{s}.tile.openweathermap.org/map/snow/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>'
+		});	
 		var layerOrder=new Array();
 		function pop_ne10mairports(feature, layer) {					
 			var popupContent = '<table><tr><th scope="row">scalerank</th><td>' + Autolinker.link(String(feature.properties['scalerank'])) + '</td></tr><tr><th scope="row">featurecla</th><td>' + Autolinker.link(String(feature.properties['featurecla'])) + '</td></tr><tr><th scope="row">type</th><td>' + Autolinker.link(String(feature.properties['type'])) + '</td></tr><tr><th scope="row">name</th><td>' + Autolinker.link(String(feature.properties['name'])) + '</td></tr><tr><th scope="row">abbrev</th><td>' + Autolinker.link(String(feature.properties['abbrev'])) + '</td></tr><tr><th scope="row">location</th><td>' + Autolinker.link(String(feature.properties['location'])) + '</td></tr><tr><th scope="row">gps_code</th><td>' + Autolinker.link(String(feature.properties['gps_code'])) + '</td></tr><tr><th scope="row">iata_code</th><td>' + Autolinker.link(String(feature.properties['iata_code'])) + '</td></tr><tr><th scope="row">wikipedia</th><td>' + Autolinker.link(String(feature.properties['wikipedia'])) + '</td></tr><tr><th scope="row">natlscale</th><td>' + Autolinker.link(String(feature.properties['natlscale'])) + '</td></tr><tr><th scope="row">type_code</th><td>' + Autolinker.link(String(feature.properties['type_code'])) + '</td></tr></table>';
@@ -81,8 +150,30 @@
 		};
 		title.addTo(map);
 	var baseMaps = {
-		'Stamen Watercolor': basemap_0
-	};
+		'OSM Standard': basemap_0,
+		'OSM Black & White': basemap_1,
+		'Stamen Toner': basemap_2,
+		'OSM DE': basemap_3,
+		'OSM HOT': basemap_4,
+		'OpenSeaMap': basemap_5,
+		'Thunderforest Cycle': basemap_6,
+		'Thunderforest Transport': basemap_7,
+		'Thunderforest Landscape': basemap_8,
+		'Thunderforest Outdoors': basemap_9,
+		'OpenMapSurfer Roads': basemap_10,
+		'OpenMapSurfer adminb': basemap_11,
+		'OpenMapSurfer roadsg': basemap_12,
+		'MapQuestOpen OSM': basemap_13,
+		'MapQuestOpen Aerial': basemap_14,
+		'Stamen Terrain': basemap_15,
+		'Stamen Watercolor': basemap_16,
+		'OpenWeatherMap Clouds': basemap_17,
+		'OpenWeatherMap Precipitation': basemap_18,
+		'OpenWeatherMap Rain': basemap_19,
+		'OpenWeatherMap Pressure': basemap_20,
+		'OpenWeatherMap Wind': basemap_21,
+		'OpenWeatherMap Temp': basemap_22,
+		'OpenWeatherMap Snow': basemap_23};
 		L.control.layers(baseMaps,{"majorairports": exp_majorairportsJSON,"ne10mairports": exp_ne10mairportsJSON},{collapsed:false}).addTo(map);
 		L.control.scale({options: {position: 'bottomleft',maxWidth: 100,metric: true,imperial: false,updateWhenIdle: false}}).addTo(map);
 	</script>
